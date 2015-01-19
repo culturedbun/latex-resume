@@ -1,0 +1,305 @@
+%%% A template to produce a nice-looking Curriculum Vitae.
+%%% Kieran Healy <kjhealy@gmail.com>
+%%% Most recent version is at http://kjhealy.github.com/kjh-vita
+%%%
+%%% ------------------------------------------------------------------------
+%%% Requirements that are included in a modern tex distribution:
+%%% ------------------------------------------------------------------------
+%%% xelatex
+%%% fontspec.sty
+%%% hyperrref.sty
+%%% xunicode.sty
+%%% color.sty
+%%% url.sty
+%%% fancyhdr.sty
+%%% memoir.cls
+%%% fontawesome.sty
+%%%
+%%% 
+%%% 
+%%% ------------------------------------------------------------------------
+%%% Requirements from https://github.com/kjhealy/latex-custom-kjh
+%%% ------------------------------------------------------------------------
+%%% org-preamble-xelatex.sty
+%%% memoir-article-styles.sty
+%%%
+%%% ------------------------------------------------------------------------
+%%% Optional
+%%% ------------------------------------------------------------------------
+%%% git
+%%% vc.sty
+%%% revnum.sty
+%%% Fonts
+%%%
+%%% ------------------------------------------------------------------------
+%%% Note
+%%%------------------------------------------------------------------------
+%%% Because this is a hand-tweaked file, be on the look out for \medksip, 
+%%% \bigskip and \newpage commands here and there, which are used to balance
+%%% the layout or avoid widows & orphans, etc. You should of course add or 
+%%% remove these as needed.
+%%%------------------------------------------------------------------------
+
+\documentclass[11pt,article,oneside]{memoir}   
+\usepackage{org-preamble-xelatex} 
+\usepackage{fontawesome,url}
+
+%% Changing the top margin by hand
+\addtolength{\topmargin}{-.875in}
+
+
+%%%------------------------------------------------------------------------
+%%% Metadata
+%%%------------------------------------------------------------------------
+
+%% Change as needed. Only some of these are 
+%% used below in the hyperref declaration and address banner section.
+\def\myauthor{Jennifer Lee}
+\def\mytitle{Vita}
+\def\mycopyright{\myauthor}
+\def\mykeywords{}
+\def\mybibliostyle{plain}
+\def\mybibliocommand{}
+\def\mysubtitle{}
+\def\myaddress{Grenvil Blok AS No.39, Jakarta 11510}
+\def\myemail{log.bayes@gmail.com}
+\def\myweb{http://github.com/estimate}
+\def\myphone{081212868868}
+\def\mytwitter{@jliyi}
+\def\myversion{}
+\def\myrevision{}
+
+\def\mykeywords{Jennifer, Jennifer Lee, Vita, CV, Resume, Computer Science}
+
+%%%------------------------------------------------------------------------  
+%%% Git version tracking 
+%%%------------------------------------------------------------------------
+
+%% If you don't use git or the vc package (from CTAN), comment this out.
+%% If you comment it out, be sure to remove the \rfoot comment below, too.
+%% \input{vc}
+
+%%%------------------------------------------------------------------------
+%%% Document
+%%%------------------------------------------------------------------------
+\begin{document}
+
+%% Choose fonts for use with xelatex
+%% Minion and Myriad are widely available, from Adobe. 
+%% Pragmata is available to buy at http://www.fsd.it/fonts/pragma.htm
+%% and is worth every penny. Any good monospace font will work fine, though.
+%% Consolas or inconsolata are good alternatives.
+\setromanfont[Mapping={tex-text}, 
+	Numbers={OldStyle},
+	Ligatures={Common}]{Minion Pro}
+\setsansfont[Mapping=tex-text,
+	Ligatures={Common}, 
+	Colour=AA0000]{Unit-Medium}
+\setmonofont[Mapping=tex-text,Scale=0.92]{Consolas} 
+
+\newfontface\scheader[SmallCapsFont={Minion Pro},SmallCapsFeatures={Letters=SmallCaps}]{Minion Pro}
+
+\newfontface\addressblock[Mapping={tex-text}, 
+	Numbers={OldStyle},
+	Ligatures={Common}]{Minion Pro}
+
+
+%%%------------------------------------------------------------------------
+%%% Local commands
+%%%------------------------------------------------------------------------
+
+%% Marginal header
+%% Note: as the document goes on you may need to introduce a (gradually increasing)
+%% \vspace element to keep the marginal header pleasingly aligned with the first 
+%% item in the body text. Like this: \marginhead{{\vskip 0.4em}Grants}, or 
+%% \marginhead{{\vskip 0.8em}Service}. Experiment as needed.
+\newcommand{\marginhead}[1]{\marginpar{\textsf{{\footnotesize\vspace{-1em}\flushright #1}}}}
+
+
+%% [optional] custom ampersand (font consistent with the one chosen above)
+% \newcommand{\amper}{{\fontspec[Scale=.95,Colour=AA0000]{Minion Pro Medium}\selectfont\&\,}}
+
+%% No bullets on labels
+\renewcommand{\labelitemi}{~} 
+
+%% Custom hanging indent for vita items
+\def\ind{\hangindent=1 true cm\hangafter=1 \noindent}
+%\def\ind{\hangindent=18pt\hangafter=1 \noindent}
+\def\labelitemi{~}
+\renewcommand{\labelitemii}{~}
+
+%%%------------------------------------------------------------------------
+%%% Page layout
+%%%------------------------------------------------------------------------
+
+% These lines will insert git revision info in the footer, using the vc
+% package---see docs for vc package for details. Comment out this line
+% if you're not using vc, and also remove the \input{vc} line above.
+\pagestyle{kjh}
+%\thispagestyle{kjhgit}
+
+%% Suppress page number on the first page
+\thispagestyle{empty}
+
+%% Place the marginal header first thing on the left side of the page
+\reversemarginpar
+
+%% Name 
+\noindent{\LARGE\scheader \textsc{jennifer lee}}
+\hfill\hfill\hfill
+%%%------------------------------------------------------------------------
+%%% Address and contact block
+%%%------------------------------------------------------------------------
+{
+\begin{minipage}[b]{1.2in}
+    \flushleft \footnotesize \addressblock
+    Grenvil Blok AS No.39 \\ 
+    Jakarta 11510 \\
+    \myphone \, \faMobilePhone
+\end{minipage}
+\hfill
+\begin{minipage}[b]{1.8in}
+    	\flushright \footnotesize 
+   	{\scriptsize \texttt{\href{mailto:\myemail}{\myemail}} \, \faEnvelope} \\
+	{\scriptsize  \texttt{\href{http://twitter.com/jliyi}{\mytwitter}} \, \faTwitter } \\ 
+    	{\scriptsize \texttt{\href{\myweb}{\myweb}} \, \faGithub}
+\end{minipage}
+}\par
+
+\bigskip
+
+\bigskip       
+
+%% Education
+
+\marginhead{\sffamily {{\vskip -0.23em} education}}
+
+\ind University of Ottawa \hfill 2010--2011
+
+\ind Carleton University, Ottawa, Ontario \hfill 2008--2010
+
+\ind \hspace{0.35in} \footnotesize Under the auspices of \href{https://ocics.site.uottawa.ca/}{Ottawa-Carleton Institute for Computer Science (OCICS)} \newline CGPA 11.6 out of 12.0 
+\newline Advised by Dr. Stan Matwin
+\normalsize \vspace{0.07in}
+
+\ind \hspace{0.35in} \footnotesize Selected coursework: Data Mining and Concept Learning, Learning Systems for Random Environment (Reinforcement Learning), Natural Language Processing, Software Agents
+\normalsize \vspace{0.07in}
+
+\ind \hspace{0.35in} \footnotesize Graduate Student Symposium: \emph{\href{http://link.springer.com/chapter/10.1007/978-3-642-13059-5_55}{On Sketch Based Anonymization Model that Satisfies Differential Privacy}}. Proceedings of the 23rd Canadian Conference on Artificial Intelligence, 2010, Ottawa, Canada. Volume 6085, pp 397-400
+
+\normalsize \vspace{0.11in}
+
+\ind Carleton University, Ottawa, Ontario \hfill 2002--2007 
+
+\ind \hspace{0.35in} \footnotesize Bachelor of Computer Science --- Software and Computing Stream. CGPA 9.68 out of 12.0
+\newline
+\ind \hspace{0.35in} \footnotesize Minor in Mathematics
+\normalsize \vspace{0.11in}
+
+\ind Bina Nusantara University, Jakarta \hfill 2000--2002
+
+\ind \hspace{0.35in} \footnotesize Applied Mathematics and Information Technology
+
+\bigskip
+
+%% Continuing project and education
+\marginhead{\sffamily {\vskip 0.35em}continuing \newline project and \newline education}
+\medskip
+
+\normalsize
+\noindent\emph{Ongoing personal research project \vspace{0.05in}} \hfill 2012 -- present
+
+\ind Privacy-aware Learning to Rank 
+
+\ind \hspace{0.35in} Implementation of differentially private algorithm and zero-knowledge proof for learning to rank as a Python library and a web framework. The underlying algorithm for learning to rank recommendation is based on Thompson Sampling. Regularized logistic regression is used to model an item CTR (click-through rate). The goal is to test the idea that we can optimize loss functions that minimize prediction error rates while simultaneously protecting user privacy. We are looking at probabilistically measuring privacy risks and experimenting with various datasets such as Web search queries, MovieLens, and ImageNet.
+
+\bigskip
+\noindent\emph{Independent coursework \vspace{0.05in}}
+
+\ind Course records \hfill \href{http://bit.ly/1zpPrKs}{http://bit.ly/1zpPrKs}
+
+\medskip
+
+\ind \href{https://www.coursera.org/course/compdata}{Computing for Data Analysis} \hfill January 2013 -- February 2013
+
+\ind \hspace{0.35in} \footnotesize Offered by Johns Hopkins University --- via Coursera
+\normalsize
+
+\ind \href{https://class.stanford.edu/courses/DB/2014/SelfPaced/about}{Introduction to Databases} \hfill January 2013 -- March 2013
+
+\ind \hspace{0.35in} \footnotesize Offered by Stanford University --- via Stanford OpenEdX
+\normalsize
+
+\ind \href{https://www.coursera.org/course/progfun}{Functional Programming Principles in Scala} \hfill April 2013 -- June 2013
+
+\ind \hspace{0.35in} \footnotesize Offered by Ecole Polytechnique Federale de Lausanne --- via Coursera
+\normalsize
+
+\ind \href{http://online.stanford.edu/course/statistical-learning-winter-2014}{Statistical Learning} \hfill January 2014 -- April 2014
+
+\ind \hspace{0.35in} \footnotesize Offered by Stanford University --- via Stanford OpenEdX
+\normalsize
+
+\bigskip
+ 
+%% Employment history
+\marginhead{\sffamily {\vskip 0.35em} employment history}
+\medskip
+
+\vspace{0.05in}
+\footnotesize
+\ind \hfill  September 2008 -- December 2008, September 2009 -- December 2009 
+
+\ind \hfill  Carleton University, Ottawa, ON
+
+\normalsize
+\ind Teaching Assistant: Introduction to Object-oriented Programming (COMP 1405)
+
+\ind \hspace{0.35in} Held office hours, graded assignments, ran weekly tutorials
+
+\vspace{0.2in}
+\hfill  \footnotesize January 2005 -- August 2005
+\newline \normalsize Help Desk Analyst
+\hfill \footnotesize Carleton University, Ottawa, ON
+
+\normalsize
+\vspace{0.05in}
+\ind \hspace{0.35in} Provided account maintenance to university faculty and students
+\newline
+\ind \hspace{0.35in} Troubleshooted computers and network issues
+\newline
+\ind \hspace{0.35in} Responded to calls, created support tickets, and escalated them when necessary
+
+ \bigskip
+
+%% Volunteer
+\marginhead{\sffamily {\vskip 0.5em}volunteer}
+\medskip
+
+\vspace{0.05in}
+
+\ind The Friend's Bookshop --- Ottawa Main Library \hfill  January 2004 -- June 2006
+
+\ind \hspace{0.35in}  Assisted with the book bar operations: sorted, shelved, and sold donated books, fundraising for the Ottawa Public Library
+
+\bigskip
+
+%% Technical Skills
+\marginhead{\sffamily {\vskip 1.12em}technical \newline skills}
+\medskip
+
+\vspace{0.05in}
+
+\ind Programming Languages
+
+\ind \hspace{0.35in} Python, Scala, Java, SQL. Have worked in C/C++, Javascript, jQuery
+
+\ind Computational Languages
+
+\ind \hspace{0.35in} Have worked in R, Matlab/Octave
+
+\ind Technologies
+
+\ind \hspace{0.35in} Have worked with D3.js for visualization, MapReduce with Hadoop, Scalding
+
+\end{document}
